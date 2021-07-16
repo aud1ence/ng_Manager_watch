@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Register</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+
+  </div>
+</div>
+<form action="">
+  <div class="card">
+    <div class="card-title">
+      <h2>Register</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="example-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" required>
+        </mat-form-field>
+      </div>
+
+      <div class="example-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Phone number</mat-label>
+          <input matInput placeholder="phone" required>
+          <mat-icon matSuffix>phone</mat-icon>
+          <mat-hint>Include area code</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div class="example-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your age</mat-label>
+          <input matInput placeholder="age" required>
+        </mat-form-field>
+      </div>
+
+      <div class="example-container">
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button value="1">Man</mat-radio-button>
+          <mat-radio-button value="2">Women</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="example-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Select your country</mat-label>
+          <mat-select [(ngModel)]="selectedValue" name="country" required>
+            <mat-option *ngFor="let country of countries" [value]="country">
+              {{country}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</form>

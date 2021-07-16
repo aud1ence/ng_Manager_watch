@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Product List</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="add">Add</button>
+      <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+    </div>
+  </div>
+</div>
+<table mat-table
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div class="example-element-description" style="width: 100%">
+          <table>
+            <tr>
+              <td rowspan="2">
+                <img style="width: 100px" src="{{element.image}}" alt="">
+              </td>
+              <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Collection</mat-label>
+                  <input matInput value="{{ element.desc }}">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Watch</mat-label>
+                  <input matInput value="{{ element.watch }}">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Dial</mat-label>
+                  <input matInput value="{{ element.dial }}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Case</mat-label>
+                  <input matInput value="{{ element.case }}">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Bracelet</mat-label>
+                  <input matInput value="{{ element.bracelet }}">
+                </mat-form-field>
+              </td>
+              <td>
+                <button style="float: right" mat-raised-button color="primary">Save</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!--        <div class="example-element-diagram">-->
+        <!--          <div class="example-element-position"> {{element.id}} </div>-->
+        <!--          <div class="example-element-symbol">{{element.desc}}  </div>-->
+        <!--          <div class="example-element-name"> {{element.name}} </div>-->
+        <!--          <div class="example-element-weight"> {{element.weight}} </div>-->
+        <!--          <div class="example-element-weight"> {{element.price}} </div>-->
+        <!--        </div>-->
+      </div>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+</table>
