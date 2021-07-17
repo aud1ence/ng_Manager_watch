@@ -1,56 +1,91 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Register</h1>
+  <h2 class="h2">Register</h2>
   <div class="btn-toolbar mb-2 mb-md-0">
 
   </div>
 </div>
-<form action="">
+<form [formGroup]="registerForm" (ngSubmit)="registerUser()">
   <div class="card">
-    <div class="card-title">
+    <!-- <div class="card-title">
       <h2>Register</h2>
+    </div> -->
+    <div class="card-body row">
+      <div class="col-4">
+        <div class="example-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter your email</mat-label>
+            <input formControlName="email" matInput placeholder="dapper@example.com" required>
+            <mat-error *ngIf="email && email.invalid">{{getErrorMessageEmail()}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="example-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter your password</mat-label>
+            <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+
+        <div class="example-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm your password</mat-label>
+            <input formControlName="confirmPassword" [errorStateMatcher]="matcher" matInput [type]="hide ? 'password' : 'text'">
+            <mat-error *ngIf="registerForm.hasError('notSame')">
+              Passwords do not match
+            </mat-error>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="example-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Phone number</mat-label>
+            <input formControlName="phone" matInput placeholder="+84" required>
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error *ngIf="phone && phone.invalid">{{getErrorMessagePhone()}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="example-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter your age</mat-label>
+            <input formControlName="age" matInput placeholder="age" required>
+            <mat-error *ngIf="age && age.invalid">{{getErrorMessageAge()}}</mat-error>
+
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="example-container">
+          <mat-radio-group formControlName="gender" aria-label="Select an option">
+            <mat-radio-button value="man">Man</mat-radio-button>
+            <mat-radio-button style="padding: 7%;" value="woman">Women</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div class="example-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Select your country</mat-label>
+            <mat-select [(ngModel)]="selectedValue" formControlName="country" required>
+              <mat-option *ngFor="let country of countries" [value]="country">
+                {{country}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
     </div>
-    <div class="card-body">
-
-      <div class="example-container">
-        <mat-form-field appearance="outline">
-          <mat-label>Enter your email</mat-label>
-          <input matInput placeholder="pat@example.com" required>
-        </mat-form-field>
-      </div>
-
-      <div class="example-container">
-        <mat-form-field appearance="outline">
-          <mat-label>Phone number</mat-label>
-          <input matInput placeholder="phone" required>
-          <mat-icon matSuffix>phone</mat-icon>
-          <mat-hint>Include area code</mat-hint>
-        </mat-form-field>
-      </div>
-
-      <div class="example-container">
-        <mat-form-field appearance="outline">
-          <mat-label>Enter your age</mat-label>
-          <input matInput placeholder="age" required>
-        </mat-form-field>
-      </div>
-
-      <div class="example-container">
-        <mat-radio-group aria-label="Select an option">
-          <mat-radio-button value="1">Man</mat-radio-button>
-          <mat-radio-button value="2">Women</mat-radio-button>
-        </mat-radio-group>
-      </div>
-
-      <div class="example-container">
-        <mat-form-field appearance="outline">
-          <mat-label>Select your country</mat-label>
-          <mat-select [(ngModel)]="selectedValue" name="country" required>
-            <mat-option *ngFor="let country of countries" [value]="country">
-              {{country}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+    <div class="card-footer">
+      <button style="width: 50%;" mat-flat-button color="accent">Save</button>
+      <button style="width: 50%;" mat-stroked-button color="accent">Cancel</button>
     </div>
   </div>
 </form>

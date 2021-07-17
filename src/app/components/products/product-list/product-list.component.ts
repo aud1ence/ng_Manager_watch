@@ -23,7 +23,7 @@ export class ProductListComponent implements OnInit {
     {
       id: 1,
       name: '7010/1R - NAUTILUS',
-      desc: 'QUARTZ',
+      collection: 'QUARTZ',
       price: 1000,
       image: 'https://static.patek.com/images/articles/face_white/350/7010_1R_011.jpg',
       watch: 'Quartz movement. Caliber E 23‑250 S C. Date. Sweep seconds hand.',
@@ -34,7 +34,7 @@ export class ProductListComponent implements OnInit {
     {
       id: 2,
       name: '7010R - NAUTILUS',
-      desc: 'QUARTZ',
+      collection: 'QUARTZ',
       price: 2000,
       image: 'https://static.patek.com/images/articles/face_white/350/7010R_011.jpg',
       watch: 'Quartz movement. Caliber E 23‑250 S C. Date. Sweep seconds hand.',
@@ -45,7 +45,7 @@ export class ProductListComponent implements OnInit {
     {
       id: 3,
       name: '7118/1200A - NAUTILUS',
-      desc: 'SELF-WINDING',
+      collection: 'SELF-WINDING',
       price: 3000,
       image: 'https://static.patek.com/images/articles/face_white/350/7118_1200A_010_1.jpg',
       watch: 'Quartz movement. Caliber E 23‑250 S C. Date. Sweep seconds hand.',
@@ -56,7 +56,7 @@ export class ProductListComponent implements OnInit {
   ];
   displayedColumns: string[] = [];
   dataSource = new MatTableDataSource<IProduct>(this.products);
-  columnsToDisplay = ['id', 'name', 'desc', 'price'];
+  columnsToDisplay = ['id', 'name', 'collection', 'price'];
   // @ts-ignore
   expandedElement: ProductListComponent | null;
 
