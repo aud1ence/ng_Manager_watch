@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {ProductListComponent} from "./components/products/product-list/product-list.component";
 import {ProductAddComponent} from "./components/products/product-add/product-add.component";
 import {RegisterComponent} from "./components/register/register.component";
+import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 

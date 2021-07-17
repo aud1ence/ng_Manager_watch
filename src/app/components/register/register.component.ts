@@ -46,6 +46,7 @@ export class RegisterComponent implements OnInit, OnChanges {
   ngOnChanges() {
 
   }
+
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
     let pass = group.controls.password.value;
     let confirmPass = group.controls.confirmPassword.value;
@@ -55,7 +56,7 @@ export class RegisterComponent implements OnInit, OnChanges {
 
   registerUser() {
     console.log(this.registerForm.value);
-    console.log(this.confirmPassword?.invalid);
+    console.log(this.gender?.hasError('required'));
   }
 
   getErrorMessageEmail() {
@@ -67,16 +68,22 @@ export class RegisterComponent implements OnInit, OnChanges {
   }
 
   getErrorMessagePassword() {
-    return this.registerForm.hasError('notSame') ? '' : 'Password do not match';
+    if (this.password?.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return this.password?.hasError('minlength') ? 'You must enter 6 character' : '';
   }
 
   getErrorMessagePhone() {
-
     return this.phone?.hasError('pattern') ? 'Not a valid phone from VN' : '';
   }
 
   getErrorMessageAge() {
     return this.age?.hasError('min') ? 'You have to over 18!' : '';
+  }
+
+  getErrorMessageGender() {
+    return this.age?.hasError('required') ? 'You have to choose gender' : '';
   }
 
   get phone() {
@@ -91,7 +98,11 @@ export class RegisterComponent implements OnInit, OnChanges {
     return this.registerForm.get('age');
   }
 
-  get confirmPassword() {
-    return this.registerForm.get('confirmPassword');
+  get password() {
+    return this.registerForm.get('password');
+  }
+
+  get gender() {
+    return this.registerForm.get('gender');
   }
 }
