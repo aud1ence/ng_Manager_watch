@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SongService} from "../../service/song.service";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
@@ -14,14 +14,16 @@ export class YoutubePlayerComponent implements OnInit {
   constructor(private songService: SongService,
               private activatedRoute: ActivatedRoute,
               private domSanitizer: DomSanitizer
-              ) {
+  ) {
   }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       const id = paramMap.get('id');
       this.song = this.songService.findSongById(id!);
+      console.log(id);
     });
+
   }
 
   getSrc() {

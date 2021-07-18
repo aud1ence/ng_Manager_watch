@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Dictionary</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    </div>
+</div>
+
+<mat-selection-list [multiple]="false">
+  <mat-list-option *ngFor="let word of words" [value]="word">
+    <p [routerLink]="['/dictionary-detail', word.id]">{{ word.word }}</p>
+  </mat-list-option>
+</mat-selection-list>
+<!--      <router-outlet></router-outlet>-->
+

@@ -20,8 +20,8 @@
         </td>
         <td class="col">
           <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Description</mat-label>
-            <input matInput formControlName="desc">
+            <mat-label>Collection</mat-label>
+            <input matInput formControlName="collection">
           </mat-form-field>
         </td>
       </div>
@@ -80,10 +80,10 @@
       <div class="row">
       <td class="col">
       <button style="width: 50%; float: right" mat-flat-button color="accent"
-      (click)="create()" >Save</button>
+      (click)="create()" *ngIf="formCreateProduct.invalid" routerLink="/products/list" >Save</button>
       </td>
       <td class="col">
-      <button style="width: 50%" mat-stroked-button color="accent" type="button" routerLink="/products">Cancel</button>
+      <button style="width: 50%" mat-stroked-button color="accent" type="button" routerLink="/products/list">Cancel</button>
       </td>
       </div>
     </tr>

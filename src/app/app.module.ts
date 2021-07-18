@@ -26,6 +26,9 @@ import {DateUtilService} from "./service/date-util.service";
 import { YoutubePlaylistComponent } from './components/youtube-playlist/youtube-playlist.component';
 import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
 import {MatListModule} from "@angular/material/list";
+import { DictionaryComponent } from './components/dictionary/dictionary.component';
+import { DictionaryDetailComponent } from './components/dictionary-detail/dictionary-detail.component';
+import {DictionaryService} from "./service/dictionary.service";
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import {MatListModule} from "@angular/material/list";
     PageNotFoundComponent,
     LifeTimeComponent,
     YoutubePlaylistComponent,
-    YoutubePlayerComponent
+    YoutubePlayerComponent,
+    DictionaryComponent,
+    DictionaryDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,7 @@ import {MatListModule} from "@angular/material/list";
     FormsModule,
     MatListModule
   ],
-  providers: [SongService, DateUtilService],
+  providers: [SongService, DateUtilService, DictionaryService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

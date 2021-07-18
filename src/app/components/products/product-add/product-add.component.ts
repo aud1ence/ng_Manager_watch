@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {ProductService} from "../../../service/product.service";
 
 @Component({
   selector: 'app-product-add',
@@ -10,7 +11,8 @@ export class ProductAddComponent implements OnInit {
 
   formCreateProduct!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private productService: ProductService) {
   }
 
   ngOnInit(): void {
@@ -28,7 +30,9 @@ export class ProductAddComponent implements OnInit {
   }
 
   create() {
-    console.log(this.formCreateProduct.value)
+    const product = this.formCreateProduct.value;
+    this.productService.saveProduct(product);
+    this.formCreateProduct.reset();
   }
 
   getErrorMessage() {
@@ -39,4 +43,5 @@ export class ProductAddComponent implements OnInit {
   get name(){
     return this.formCreateProduct?.get('name');
   }
+
 }
