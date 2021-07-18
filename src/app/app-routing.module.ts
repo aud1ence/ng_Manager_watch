@@ -4,6 +4,9 @@ import {ProductListComponent} from "./components/products/product-list/product-l
 import {ProductAddComponent} from "./components/products/product-add/product-add.component";
 import {RegisterComponent} from "./components/register/register.component";
 import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
+import {LifeTimeComponent} from "./components/life-time/life-time.component";
+import {YoutubePlaylistComponent} from "./components/youtube-playlist/youtube-playlist.component";
+import {YoutubePlayerComponent} from "./components/youtube-player/youtube-player.component";
 
 const routes: Routes = [
   {
@@ -17,6 +20,18 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'life-time',
+    component: LifeTimeComponent
+  },
+  {
+    path: 'youtube',
+    component: YoutubePlaylistComponent,
+    children: [{
+      path: ':id',
+      component: YoutubePlayerComponent
+    }]
   },
   {
     path: '**',

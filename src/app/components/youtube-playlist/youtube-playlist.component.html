@@ -1,0 +1,8 @@
+<h2>Youtube playlist</h2>
+<mat-selection-list [multiple]="false">
+  <mat-list-option *ngFor="let song of playlist" [value]="song">
+    <p [routerLink]="['/youtube', song.id]">{{ song.name}}</p>
+  </mat-list-option>
+</mat-selection-list>
+
+<router-outlet></router-outlet>

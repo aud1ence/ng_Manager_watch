@@ -20,6 +20,12 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatSelectModule} from "@angular/material/select";
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { LifeTimeComponent } from './components/life-time/life-time.component';
+import {SongService} from "./service/song.service";
+import {DateUtilService} from "./service/date-util.service";
+import { YoutubePlaylistComponent } from './components/youtube-playlist/youtube-playlist.component';
+import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -29,7 +35,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ProductListComponent,
     ProductAddComponent,
     RegisterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LifeTimeComponent,
+    YoutubePlaylistComponent,
+    YoutubePlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -45,9 +54,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     MatIconModule,
     MatRadioModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatListModule
   ],
-  providers: [],
+  providers: [SongService, DateUtilService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
